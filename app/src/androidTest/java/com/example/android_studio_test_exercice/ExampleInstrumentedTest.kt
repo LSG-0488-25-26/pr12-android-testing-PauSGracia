@@ -10,6 +10,7 @@ import androidx.compose.ui.test.assertIsOn
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -41,17 +42,7 @@ import org.junit.Rule
 class ExampleInstrumentedTest {
 
     @get:Rule
-    val composeTestRule = createComposeRule()
-
-    private lateinit var viewModel: MainViewModel
-
-    @Before
-    fun setup() {
-        viewModel = MainViewModel()
-        composeTestRule.setContent {
-            MainView(myViewModel = viewModel)
-        }
-    }
+    val composeTestRule = createAndroidComposeRule<MainActivity>()
 
     @Test
     fun checkInitialComposableValues() {
