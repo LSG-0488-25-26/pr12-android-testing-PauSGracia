@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -62,6 +64,7 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth()
@@ -196,7 +199,7 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
             Box(modifier = Modifier.wrapContentSize()) {
                 Text(
                     text = selectedItem,
-                    modifier = Modifier.clickable {  myViewModel.setExpanded(true)  }
+                    modifier = Modifier.clickable {  myViewModel.setExpanded(true)  }.testTag("dropdown_text_id")
                 )
                 DropdownMenu(
                     expanded = expanded,
@@ -208,7 +211,8 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
                             onClick = {
                                 myViewModel.setSelectedItem(option)
                                 myViewModel.setExpanded(false)
-                            }
+                            },
+                            modifier = Modifier.testTag("dropdown_item_${option.replace(" ", "_")}_id")
                         )
                     }
                 }
