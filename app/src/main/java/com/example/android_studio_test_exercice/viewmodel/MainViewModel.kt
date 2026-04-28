@@ -116,7 +116,7 @@ class MainViewModel: ViewModel {
 
     fun setSelectedItem(option: String)
     {
-        this._selectedOption.value = option;
+        this._selectedItem.value = option;
     }
 
     fun setSearchText(search: String)
