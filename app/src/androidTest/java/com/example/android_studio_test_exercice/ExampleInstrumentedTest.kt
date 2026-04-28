@@ -108,4 +108,17 @@ class ExampleInstrumentedTest {
 
         composeTestRule.onNodeWithText("Volum: 67%").assertExists()
     }
+
+    @Test
+    fun checkTriStateCheckboxInteraction() {
+        composeTestRule.onNodeWithTag("carnivor_checkbox_id").performScrollTo()
+
+        composeTestRule.onNodeWithTag("tristate_checkbox_id").assertExists()
+
+        composeTestRule.onNodeWithTag("tristate_checkbox_id").performClick()
+        composeTestRule.onNodeWithTag("tristate_checkbox_id").performClick()
+        composeTestRule.onNodeWithTag("tristate_checkbox_id").performClick()
+
+        composeTestRule.onNodeWithTag("tristate_checkbox_id").assertIsOff()
+    }
 }

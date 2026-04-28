@@ -76,6 +76,7 @@ class ExampleUnitTest {
         assertEquals(ToggleableState.Off, viewModel.triStateStatus.value)
     }
 
+    @Test
     fun checkCheckboxLogic() {
         assertEquals(true, viewModel.esCarnivor.value)
         assertEquals(false, viewModel.esVegetaria.value)
@@ -115,5 +116,21 @@ class ExampleUnitTest {
 
         assertEquals(false, viewModel.expanded.value)
         assertEquals("Opció B", viewModel.selectedItem.value)
+    }
+
+    @Test
+    fun checkCheckboxTogglesLogic() {
+        viewModel.toggleEsCarnivor()
+        assertEquals(false, viewModel.esCarnivor.value)
+
+        viewModel.toggleEsVega()
+        assertEquals(true, viewModel.esVega.value)
+    }
+
+    @Test
+    fun checkFinalToggleLogic() {
+        assertEquals(false, viewModel.toggleState.value)
+        viewModel.toggle()
+        assertEquals(true, viewModel.toggleState.value)
     }
 }
